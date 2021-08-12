@@ -15,7 +15,18 @@ const process = {
 		const {id, password} = req.body;
 		const userInfo = UserStorage.getUserInfo("id", "password");
 		
-		console.log(userInfo);
+		const response = {};
+		if(userInfo.id.includes(id)) {
+			const idx = userInfo.id.indexOf(id);
+			if (userInfo.password[idx] === password) {
+				response.success = true;
+				return res.json(response);
+			}
+		}
+
+		response.success = false;
+		response.msg = "로그인을 할 수 없습니다.";
+		return res.json(response);
 	}
 }
 

@@ -20,4 +20,13 @@ function login() {
 		},
 		body: JSON.stringify(req),
 	})
+		.then(res => res.json())
+		.then(res => {
+			if (res.success) {
+				location.href = "/";
+			} else {
+				alert(res.msg);
+			}
+		})
+		.catch(console.log);
 }
