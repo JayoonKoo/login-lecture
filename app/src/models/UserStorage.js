@@ -11,7 +11,7 @@ class UserStorage{
 		const users = this.#user;
 		const newUsers = fields.reduce((newUsers, field) => {
 			if (users.hasOwnProperty(field)) {
-				newUsers.field = users[field];
+				newUsers[field] = users[field];
 			}
 			return newUsers;
 		}, {});
@@ -19,3 +19,5 @@ class UserStorage{
 		return newUsers;
 	}
 }
+
+module.exports = UserStorage;
